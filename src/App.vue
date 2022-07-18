@@ -1,16 +1,62 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <nav class="navbar_container navbar bg-light">
+    <div>
+      <a class="navbar_brand navbar-brand">
+        <img src="./assets/logo.png" alt="" class="logo_navbar">
+        <button class="button " @click="main = true, music = false, military=false, green=false, city=false">GŁÓWNA </button>
+        <button class="button" @click="main = false, music = true, military=false, green=false, city=false">MUZYKA </button>
+        <button class="button nav_other_title" style=" text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em darkred;" @click="main = false, music = false, military=true, green=false, city=false">SURVIVAL <br> MILITARNY </button>
+        <button class="button nav_other_title" style=" text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em green;" @click="main = false, music = false, military=false, green=true, city=false">SURVIVAL <br> ZIELONY </button>
+        <button class="button nav_other_title" style=" text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em blue !important;" @click="main = false, music = false, military=false, green=false, city=true">SURVIVAL <br> MIEJSKI </button>
+      </a>
+    </div>
+  </nav>
+      <h1 v-if="main">
+         <HelloWorld msg="Wszystko o survivalu"/>
+      </h1>
+      <h1 v-else-if="music">
+         <MusicPage></MusicPage>
+      </h1>
+      <h1 v-else-if="military">
+         <MilitaryPage></MilitaryPage>
+      </h1>
+      <h1 v-else-if="green">
+         <GreenPage></GreenPage>
+      </h1>
+      <h1 v-else-if="city">
+         <CityPage></CityPage>
+      </h1>
+
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/WelcomePage.vue'
+import MusicPage from "@/components/MusicPage";
+import MilitaryPage from "@/components/MilitaryPage";
+import GreenPage from "@/components/GreenPage";
+import CityPage from "@/components/CityPage";
+
+
 
 export default {
   name: 'App',
   components: {
+    CityPage,
+    GreenPage,
+    MilitaryPage,
+    MusicPage,
     HelloWorld
-  }
+  },
+  data() {
+    return {
+      main: true,
+      music: true,
+      military: true,
+      green: true,
+      city: true
+    }
+  },
 }
 </script>
 
@@ -20,7 +66,36 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #dcdcdc;
+  margin: 0;
 }
+.navbar_brand
+{
+}
+.navbar_container
+{
+  background: url("./assets/images.jpg");
+  padding: 0!important;
+}
+.logo_navbar
+{
+  width: 150px;
+}
+.button {
+  font-size: 30px;
+  color: aliceblue;
+  text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em #24801a;
+  font-family: fantasy;
+  background: none;
+  border: none;
+  margin: 0 1vw 0 1vw;
+  /*color: #24801a*/
+}
+.nav_other_title
+{
+  font-size: 20px;
+  position: relative;
+  top: -20px
+}
+
 </style>
