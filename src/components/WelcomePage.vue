@@ -1,8 +1,8 @@
 <template>
   <div class="welcome_page">
-    <h1>{{ msg }}</h1>
-     <h2>Zacznij swoją przygodę z survivalem! </h2>
-      <div class="description">
+    <h1 class="w3-animate-zoom">{{ msg }}</h1>
+     <h2 class="w3-animate-zoom">Zacznij swoją przygodę z survivalem! </h2>
+      <div class="description w3-animate-zoom">
         <i style="text-shadow: 0 0 0.2em #000, 0 0 0.2em #000, 0 0 0.2em #000;" >"Mianem <b style="text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em #24801a;">survivalu</b> (lub surwiwalu) określa się sztukę przetrwania w trudnych warunkach. Jest to swego rodzaju samoratownictwo,
         czyli radzenie sobie w specyficznym scenariuszu,
         np. klęski żywiołowej, wojny, wypadku, zagubienia na odludziu itd. Dotyczy to ekstremalnych sytuacji i to nie tylko w dziczy, ale i w mieście (np. podczas blackoutu).
@@ -20,21 +20,26 @@
         Ze względu na charakter aktywności surwiwalowej wyróżnia się zazwyczaj trzy główne odmiany:
       </div>
       <ul class="list">
+        <li class="list_item" style="text-shadow: 0 0 0.2em green;">
+          <button class="list_item_title" style="text-shadow: 0 0 0.2em green;"><b style="text-transform: uppercase; color: black">survival zielony</b>
+            – celem jest nabycie i utrzymanie umiejętności pozwalających na samowystarczalną egzystencję w warunkach przebywania poza cywilizacją.
+          Istnieje tu duży związek z naturą. Ten rodzaj survivalu nastawiony jest silnie na rekreację, ale – w wersji rozwiniętej
+          – przygotowuje też do działań w warunkach zagrożeń podczas klęsk żywiołowych, katastrof komunikacyjnych, itp.
+            </button>
+        </li>
         <li class="list_item" style="text-shadow: 0 0 0.2em darkred;">
-          <button class="list_item_title" style="text-shadow: 0 0 0.2em darkred;" @click="main = false, music = false, military=true, green=false, city=false"><b>survival militarny</b></button>
+          <button class="list_item_title" style="text-shadow: 0 0 0.2em darkred;"><b style="text-transform: uppercase; color: black">survival militarny</b>
           – celem jest, podobnie jak w wojsku, nabycie i utrzymanie umiejętności pozwalających na zachowanie sprawności
           i życia dla wykonania ustalonego zadania. Ten element decyduje o charakterze szkolenia. Mogą tu występować formy rekreacyjne,
           ale survival militarny może być traktowany jako faktyczne utrzymywanie wojskowej sprawności na wypadek działań wojennych
-        </li>
-        <li class="list_item" style="text-shadow: 0 0 0.2em green;">
-          <button class="list_item_title" style="text-shadow: 0 0 0.2em green;"><b>survival zielony</b></button> – celem jest nabycie i utrzymanie umiejętności pozwalających na samowystarczalną egzystencję w warunkach przebywania poza cywilizacją.
-          Istnieje tu duży związek z naturą. Ten rodzaj survivalu nastawiony jest silnie na rekreację, ale – w wersji rozwiniętej
-          – przygotowuje też do działań w warunkach zagrożeń podczas klęsk żywiołowych, katastrof komunikacyjnych, itp.
+          </button>
         </li>
         <li class="list_item" style="  text-shadow: 0 0 0.2em blue;">
-          <button class="list_item_title" style="text-shadow: 0 0 0.2em blue;"><b>survival miejski</b></button> – celem survivalu miejskiego jest działanie samowystarczalne w warunkach metropolii,
+          <button class="list_item_title" style="text-shadow: 0 0 0.2em blue;"><b style="text-transform: uppercase; color: black">survival miejski</b>
+            – celem survivalu miejskiego jest działanie samowystarczalne w warunkach metropolii,
           a więc szukania możliwości przetrwania w zagęszczeniu uwarunkowań społecznych.
           Ten rodzaj survivalu stawia nacisk na doświadczanie własnych możliwości i elementy poznawcze.
+            </button>
 
         </li>
       </ul>
@@ -80,7 +85,8 @@ a {
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  background: url("../assets/Background.jpg");
+  /*background: url("../assets/Background.jpg");*/
+  background: url("../assets/giphy.gif");
   background-size: cover;
   height: 80vh;
 }
@@ -109,7 +115,7 @@ a {
 {
   background-image: url("../assets/wood.jpg");
   color: white;
-  padding: 30px 20vw 40px 20vw;
+  padding: 30px 15vw 40px 15vw;
   text-align: justify;
   flex-direction: column;
   align-items: center;
@@ -120,8 +126,16 @@ a {
   font-size: 25px;
   background: linear-gradient( to right, red, orange);
   border-radius: 30px;
-  padding: 10px;
-  margin-top: 20px;
+  padding: 15px;
+  transition: 2s;
+  margin: 30px 6vw 10px 6vw;
+}
+.description_list:hover
+{
+  background: linear-gradient( to right, orange, red);
+  cursor: pointer;
+  margin: 30px 2.5vw 10px 2.5vw;
+  padding: 15px 3.5vw 15px 3.5vw;
 }
 .list
 {
@@ -137,7 +151,13 @@ a {
 {
   border: none;
   background: none;
-  text-transform: uppercase;
+  text-align: justify;
+  color: white;
+}
+.list_item_title:hover
+{
+  color: black;
+  cursor: pointer ;
 }
 
 @media screen and (max-width:1050px){

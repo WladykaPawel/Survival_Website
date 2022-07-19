@@ -1,20 +1,91 @@
 <template>
-    <div class="container">
-    Survival Zielony
+  <div class="container_green">
+    <div class="title">
+      Survival Zielony
+    </div>
+    <div class="choose_information">Wybierz intereującą Cię tematykę survivalowową</div>
+    <select class="choose" v-model="selected_topic">
+      <option class="options" v-for="topic in topics" :key="topic.id">
+        {{ topic.topic }}
+      </option>
+    </select>
+    <div class="main_container" v-if="selected_topic=='Przygotowania'">
+      <PreparationPage></PreparationPage>
+    </div>
+    <div class="main_container" v-if="selected_topic=='Broń'">
+      <WeaponPage></WeaponPage>
+    </div>
+
   </div>
 </template>
 
 <script>
+import PreparationPage from "@/components/GreenPage_components/Preparation";
+import WeaponPage from "@/components/GreenPage_components/Weapon";
 export default {
-  name: "GreenPage"
+  name: "GreenPage",
+  components: {WeaponPage, PreparationPage},
+  data(){
+    return{
+      selected_topic:'Przygotowania',
+      topics:[
+        {topic:'Przygotowania'},
+        {topic:'Broń'},
+        {topic:'Miejsce do spania'},
+        {topic:'Zdobywanie jedzenia'},
+        {topic:'Ogień i Ogniska'},
+        {topic:'BHP i Pierwsza Pomoc'}
+      ]
+
+    }
+  }
 }
 </script>
 
 <style scoped>
-.container
+.container_green
+{
+  background-size: cover;
+  background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("../assets/green_survival.jpg");
+  min-height: 2000px;
+  margin-bottom: -10px;
+}
+.title
 {
   color: green;
+  padding: 30px 10px;
+  font-family: fantasy;
+  letter-spacing: 2px;
 }
 
+.choose
+{
+  font-size: 20px;
+  color: white;
+  border-radius: 5px;
+  width: 30vw;
+  padding: 12px;
+  background: url("../assets/Music_background.jpg");
+
+}
+.options
+{
+  padding: 40px;
+  border-radius: 10px;
+  background-color: #4c4c4c;
+}
+.choose_information
+{
+  color: darkgreen;
+  padding-bottom: 50px;
+}
+.main_container
+{
+	display: flex;
+  flex-direction: column;
+	align-items: center;
+  justify-content: center;
+  margin: 30px 6vw 0 6vw;
+}
 
 </style>

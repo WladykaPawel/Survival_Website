@@ -5,28 +5,29 @@
         <img src="./assets/logo.png" alt="" class="logo_navbar">
         <button class="button " @click="main = true, music = false, military=false, green=false, city=false">GŁÓWNA </button>
         <button class="button" @click="main = false, music = true, military=false, green=false, city=false">MUZYKA </button>
+         <button class="button nav_other_title" style=" text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em green;" @click="main = false, music = false, military=false, green=true, city=false">SURVIVAL <br> ZIELONY </button>
         <button class="button nav_other_title" style=" text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em darkred;" @click="main = false, music = false, military=true, green=false, city=false">SURVIVAL <br> MILITARNY </button>
-        <button class="button nav_other_title" style=" text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em green;" @click="main = false, music = false, military=false, green=true, city=false">SURVIVAL <br> ZIELONY </button>
         <button class="button nav_other_title" style=" text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em blue !important;" @click="main = false, music = false, military=false, green=false, city=true">SURVIVAL <br> MIEJSKI </button>
       </a>
     </div>
   </nav>
+    <div style="margin-top: 130px">
       <h1 v-if="main">
          <HelloWorld msg="Wszystko o survivalu"/>
       </h1>
       <h1 v-else-if="music">
          <MusicPage></MusicPage>
       </h1>
-      <h1 v-else-if="military">
-         <MilitaryPage></MilitaryPage>
-      </h1>
       <h1 v-else-if="green">
          <GreenPage></GreenPage>
+      </h1>
+      <h1 v-else-if="military">
+         <MilitaryPage></MilitaryPage>
       </h1>
       <h1 v-else-if="city">
          <CityPage></CityPage>
       </h1>
-
+    </div>
 
 </template>
 
@@ -74,8 +75,12 @@ export default {
 }
 .navbar_container
 {
+  z-index: 1000 ;
+  position:fixed;
+  width: 100vw;
   background: url("./assets/images.jpg");
   padding: 0!important;
+  margin-top: -130px;
 }
 .logo_navbar
 {
@@ -90,6 +95,10 @@ export default {
   border: none;
   margin: 0 1vw 0 1vw;
   /*color: #24801a*/
+}
+.button:hover
+{
+  color: #37c225;
 }
 .nav_other_title
 {
