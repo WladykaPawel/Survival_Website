@@ -1,10 +1,10 @@
 <template>
   <div class="music_container">
     <header>
-      <h1>Muzyka o tematyce Survivalu</h1>
+      <h1 class="w3-animate-left">Muzyka o tematyce Survivalu</h1>
     </header>
     <main>
-      <section class="player">
+      <section class="player w3-animate-left">
         <h2 class="song-title">
           {{ current.title }} - <span>{{ current.artist }}</span>
         </h2>
@@ -15,7 +15,7 @@
           <button class="next" @click="next">Next</button>
         </div>
       </section>
-      <section class="playlist">
+      <section class="playlist w3-animate-right">
         <h3>Playlista</h3>
         <button v-for="song in songs" :key="song.src" @click="play(song)" :class="(song.src == current.src) ? 'song playing' : 'song'">
           {{ song.title }} - {{ song.artist }}
