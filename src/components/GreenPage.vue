@@ -1,19 +1,31 @@
 <template>
   <div class="container_green">
-    <div class="title">
+    <div class="title w3-animate-right">
       Survival Zielony
     </div>
-    <div class="choose_information">Wybierz intereującą Cię tematykę survivalowową</div>
+    <div class="choose_information w3-animate-left ">Wybierz intereującą Cię tematykę survivalowową</div>
     <select class="choose" v-model="selected_topic">
       <option class="options" v-for="topic in topics" :key="topic.id">
         {{ topic.topic }}
       </option>
     </select>
-    <div class="main_container" v-if="selected_topic=='Przygotowania'">
+    <div class="main_container w3-animate-top" v-if="selected_topic=='Przygotowania'">
       <PreparationPage></PreparationPage>
     </div>
-    <div class="main_container" v-if="selected_topic=='Broń'">
+    <div class="main_container w3-animate-top" v-if="selected_topic=='Broń'">
       <WeaponPage></WeaponPage>
+    </div>
+    <div class="main_container w3-animate-top" v-if="selected_topic=='Miejsce do spania'">
+      <PlaceToSleepPage></PlaceToSleepPage>
+    </div>
+    <div class="main_container w3-animate-top" v-if="selected_topic=='Zdobywanie jedzenia'">
+      C.D.N...
+    </div>
+    <div class="main_container w3-animate-top" v-if="selected_topic=='Ogień i Ogniska'">
+      C.D.N...
+    </div>
+    <div class="main_container w3-animate-top" v-if="selected_topic=='BHP i Pierwsza Pomoc'">
+      C.D.N...
     </div>
 
   </div>
@@ -22,9 +34,10 @@
 <script>
 import PreparationPage from "@/components/GreenPage_components/Preparation";
 import WeaponPage from "@/components/GreenPage_components/Weapon";
+import PlaceToSleepPage from "@/components/GreenPage_components/PlaceToSleep";
 export default {
   name: "GreenPage",
-  components: {WeaponPage, PreparationPage},
+  components: {PlaceToSleepPage, WeaponPage, PreparationPage},
   data(){
     return{
       selected_topic:'Przygotowania',
@@ -86,6 +99,7 @@ export default {
 	align-items: center;
   justify-content: center;
   margin: 30px 6vw 0 6vw;
+  color: #24801a;
 }
 
 </style>

@@ -1,14 +1,13 @@
 <template>
   <div class="component_container">
     <div class="main">
-    Ponieważ Surviwal nie jest bezpiecznym zajęciem, broń jest jego nieodłączym i bardzo ważnym elementem.
+    &emsp; &emsp; Ponieważ Survival nie jest bezpiecznym zajęciem, broń jest jego nieodłączym i bardzo ważnym elementem.
     W Polsce broń palna jest niedozwolona bez zezwolenia, którego zdobycie nie należy do najłatwiejszych.
-    <br>
     Mimo tego istnieją przedmioty mogące służyć do samoobrony lub walki z siłami natury które można zdobyć i posiadac nie łamiąc pzepisów.
-    Pierwszym wyborem jest <b>NÓŻ</b>
+    Pierwszym i stosunkowo najlepszym wyborem jest <b>NÓŻ</b>
     </div>
     <ul class="types_of_knife">
-      <h2 style="color: black">Rodzaje noży :</h2>
+      <h2 style="color: green">Rodzaje noży :</h2>
       <li class="knife_type">
         <b>Drop Point</b><br>
         <div class="knife_container">
@@ -175,9 +174,10 @@ export default {
 }
 .types_of_knife
 {
-  margin: 40px 10vw 50px 10vw;
+  margin: 40px 10vw 10px 10vw;
   padding: 50px;
   background-color: #FFFFFF;
+  border-radius: 10px;
 }
 .knife_type
 {
