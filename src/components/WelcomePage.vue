@@ -124,18 +124,22 @@ a {
 .description_list
 {
   font-size: 25px;
-  background: linear-gradient( to right, red, orange);
   border-radius: 30px;
   padding: 15px;
   transition: 2s;
   margin: 30px 6vw 10px 6vw;
+  animation: change 0.5s infinite linear;
 }
-.description_list:hover
-{
-  background: linear-gradient( to right, orange, red);
-  cursor: pointer;
-  margin: 30px 2.5vw 10px 2.5vw;
-  padding: 15px 3.5vw 15px 3.5vw;
+@keyframes change{
+  0%{background: linear-gradient( 0deg, darkgreen, green);}
+  25%{background: linear-gradient( 45deg, darkgreen, green);}
+  25%{background: linear-gradient( 90deg, darkgreen, green);}
+  37%{background: linear-gradient( 135deg, darkgreen, green);}
+  50%{background: linear-gradient( 180deg, darkgreen, green);}
+  62%{background: linear-gradient( 225deg, darkgreen, green);}
+  75%{background: linear-gradient( 270deg, darkgreen, green);}
+  87%{background: linear-gradient( 315deg, darkgreen, green);}
+  100%{background: linear-gradient( 360deg, darkgreen, green);}
 }
 .list
 {

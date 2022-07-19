@@ -130,6 +130,7 @@ body {
   background-size: cover;
   height: 110vh;
   width: 100vw;
+  margin-bottom: -10px;
 }
 .song-title {
   color: #FFFFFF;
@@ -159,7 +160,7 @@ button:hover {
   font-size: 20px;
   font-weight: 700;
   padding: 15px 25px;
-  margin: 0px 15px;
+  margin: 0 15px;
   border-radius: 8px;
   color: #FFFFFF;
   background-image: linear-gradient(to left, #24801a, #37c225);
@@ -168,7 +169,7 @@ button:hover {
   font-size: 16px;
   font-weight: 700;
   padding: 10px 20px;
-  margin: 0px 15px;
+  margin: 0 15px;
   border-radius: 6px;
   color: #FFFFFF;
   background-image: linear-gradient(to right, #24801a, #37c225);
