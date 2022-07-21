@@ -7,7 +7,7 @@ The Web page has a header that allows you to navigate through the website conten
 ![image](https://user-images.githubusercontent.com/101670830/180168723-fa07b0d1-76d4-4be6-8847-fe4967aa5f7f.png)
 
 
-Na stronie został także umieszczony Odtwarzacz muzyki na osobnej podstronie. (Dodane są jedynie przykładowe pozycje)
+The website also has a Music player on a separate subpage. (Only sample items are added)
 
 ![image](https://user-images.githubusercontent.com/101670830/180168967-1d74b7df-6d20-4d70-b8bc-f59d101c78ca.png)
 
