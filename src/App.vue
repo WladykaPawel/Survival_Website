@@ -2,18 +2,21 @@
   <nav class="navbar_container navbar bg-light">
     <div>
       <a class="navbar_brand navbar-brand">
-        <img src="./assets/logo.png" alt="" class="logo_navbar">
-        <button class="button " @click="main = true, music = false, military=false, green=false, city=false">GŁÓWNA </button>
-        <button class="button" @click="main = false, music = true, military=false, green=false, city=false">MUZYKA </button>
-        <button class="button nav_other_title" style=" text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em green;" @click="main = false, music = false, military=false, green=true, city=false">SURVIVAL <br> ZIELONY </button>
-        <button class="button nav_other_title" style=" text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em darkred;" @click="main = false, music = false, military=true, green=false, city=false">SURVIVAL <br> MILITARNY </button>
-        <button class="button nav_other_title" style=" text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em blue !important;" @click="main = false, music = false, military=false, green=false, city=true">SURVIVAL <br> MIEJSKI </button>
+        <button class="button_logo" @click="Scrool(),main = true, music = false, military=false, green=false, city=false"> <img src="./assets/logo.png" alt="" class="logo_navbar"> </button>
+        <button class="button " @click="Scrool(), main = true, music = false, military=false, green=false, city=false">GŁÓWNA </button>
+        <button class="button" @click="Scrool(), main = false, music = true, military=false, green=false, city=false">MUZYKA </button>
+        <button class="button nav_other_title" style=" text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em green;" @click="Scrool(), main = false, music = false, military=false, green=true, city=false">SURVIVAL <br> ZIELONY </button>
+        <button class="button nav_other_title" style=" text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em darkred;" @click="Scrool(), main = false, music = false, military=true, green=false, city=false">SURVIVAL <br> MILITARNY </button>
+        <button class="button nav_other_title" style=" text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em blue" @click="Scrool(), main = false, music = false, military=false, green=false, city=true">SURVIVAL <br> MIEJSKI </button>
+<!--        <button class="button" @click="czy=!czy">zmiana</button>-->
+<!--        {{czy}}{{test2}}-->
       </a>
     </div>
   </nav>
     <div class="main_choose" style="margin-top: 130px">
       <h1 v-if="main">
-         <HelloWorld msg="Wszystko o survivalu"/>
+        <HelloWorld @first="GreenPage" @second="MilitaryPage" @third="CityPage" msg="Wszystko o survivalu"></HelloWorld>
+<!--          <HelloWorld :test="czy" @add="()=> czy=!czy " msg="Wszystko o survivalu"></HelloWorld>-->
       </h1>
       <h1 v-else-if="music">
          <MusicPage></MusicPage>
@@ -28,7 +31,12 @@
          <CityPage></CityPage>
       </h1>
     </div>
-  <a href="javascript:scroll(0,0);"> <img class="arrow" src="@/assets/arrow.png" alt="strzałka"></a>
+
+    <a href="javascript:scroll(0,0);">
+      <img class="arrow" src="@/assets/arrow.png" alt="strzałka">
+    </a>
+
+  <FooterLine  @first="MainPage" @second="MusicPage"  @third="GreenPage" @fourth="MilitaryPage" @fifth="CityPage"> </FooterLine>
 
 </template>
 
@@ -38,12 +46,14 @@ import MusicPage from "@/components/MusicPage";
 import MilitaryPage from "@/components/MilitaryPage";
 import GreenPage from "@/components/GreenPage";
 import CityPage from "@/components/CityPage";
+import FooterLine from "@/components/Footer";
 
 
 
 export default {
   name: 'App',
   components: {
+    FooterLine,
     CityPage,
     GreenPage,
     MilitaryPage,
@@ -56,8 +66,77 @@ export default {
       music: true,
       military: true,
       green: true,
-      city: true
+      city: true,
+      test: false,
+      disappearing_bool:false
     }
+  },
+  methods:
+  {
+    MainPage()
+    {
+      this.Scrool();
+      this.main= true;
+      this.music= false;
+      this.military= false;
+      this.green= false;
+      this.city= false;
+
+    },
+    MusicPage()
+    {
+      this.Scrool();
+      this.main= false;
+      this.music= true;
+      this.military= false;
+      this.green= false;
+      this.city= false;
+
+    },
+    GreenPage()
+    {
+      this.Scrool();
+      this.main= false;
+      this.music= false;
+      this.military= false;
+      this.green= true;
+      this.city= false;
+
+    },
+    MilitaryPage()
+    {
+      this.Scrool();
+      this.main= false;
+      this.music= false;
+      this.military= true;
+      this.green= false;
+      this.city= false;
+    },
+    CityPage()
+    {
+      this.Scrool();
+      this.main= false;
+      this.music= false;
+      this.military= false;
+      this.green= false;
+      this.city= true;
+    },
+    Scrool()
+    {
+      scroll(0,0);
+    },
+    Disappearing()
+    {
+        if(scroll(0,300))
+        {
+          this.disappearing_bool=true;
+        }
+    }
+    // test4(e) {
+    //   this.czy.push(e);
+    //   this.test5=e;
+    //   },
+
   },
 }
 // {
@@ -95,6 +174,14 @@ export default {
 .logo_navbar
 {
   width: 150px;
+  margin: -10px;
+}
+.button_logo
+{
+  background: none;
+  border: none;
+
+
 }
 .button {
   font-size: 30px;
@@ -118,13 +205,16 @@ export default {
 }
 .arrow
 {
-  width: 5vw;
-  height: 5vw;
+  width: 7vh;
+  height: 7vh ;
   margin-bottom: 30px;
   transition: 1s;
   position: fixed;
 	right: 50px;
-	bottom: 50px;
+	bottom: 30px;
+  background: #24801a;
+  border-radius: 300px;
+  padding: 10px;
 }
 .arrow:hover
 {

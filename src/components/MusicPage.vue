@@ -40,12 +40,17 @@ data () {
         {
           title: 'Bieszczadzkie anioły',
           artist: 'Stare Dobre Małżeństwo',
-          src: require('../assets/bieszczadzkie-anioly-stare-dobre-malzenstwo.mp3')
+          src: require('../assets/music/bieszczadzkie-anioly-stare-dobre-malzenstwo.mp3')
         },
         {
           title: 'Testowy Utwór',
           artist: 'Testowy wykonawca',
-          src: require('../assets/Black Clover - Opening 3 (HD).mp3')
+          src: require('../assets/music/Black Clover - Opening 3 (HD).mp3')
+        },
+        {
+          title: 'The attack of the dead men',
+          artist: 'Sabaton',
+          src: require('../assets/music/sabaton-the-attack-of-the-dead-men-official-lyric-video.mp3')
         }
       ],
       player: new Audio()

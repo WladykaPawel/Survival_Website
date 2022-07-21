@@ -15,27 +15,31 @@
   </div>
   <section class="kinds">
     <div> Rodzaje Survivalu</div>
+<!--    {{test}}-->
+<!--    {{test2}}-->
+<!--    <button class="button" @click="test2!=test2, $emit('add', test2)">zmiana</button>-->
+
     <div>
       <div class="description_list"> Survival występuje w wielu odmianach, które można ukształtować dla własnych potrzeb.
         Ze względu na charakter aktywności surwiwalowej wyróżnia się zazwyczaj trzy główne odmiany:
       </div>
       <ul class="list">
         <li class="list_item" style="text-shadow: 0 0 0.2em green;">
-          <button class="list_item_title" style="text-shadow: 0 0 0.2em green;"><b style="text-transform: uppercase; color: black">survival zielony</b>
+          <button class="list_item_title" @click="ChangePageGreen" style="text-shadow: 0 0 0.2em green;"><b style="text-transform: uppercase; color: black">survival zielony</b>
             – celem jest nabycie i utrzymanie umiejętności pozwalających na samowystarczalną egzystencję w warunkach przebywania poza cywilizacją.
           Istnieje tu duży związek z naturą. Ten rodzaj survivalu nastawiony jest silnie na rekreację, ale – w wersji rozwiniętej
           – przygotowuje też do działań w warunkach zagrożeń podczas klęsk żywiołowych, katastrof komunikacyjnych, itp.
             </button>
         </li>
         <li class="list_item" style="text-shadow: 0 0 0.2em darkred;">
-          <button class="list_item_title" style="text-shadow: 0 0 0.2em darkred;"><b style="text-transform: uppercase; color: black">survival militarny</b>
+          <button class="list_item_title" @click="ChangePageMilitary" style="text-shadow: 0 0 0.2em darkred;"><b style="text-transform: uppercase; color: black">survival militarny</b>
           – celem jest, podobnie jak w wojsku, nabycie i utrzymanie umiejętności pozwalających na zachowanie sprawności
           i życia dla wykonania ustalonego zadania. Ten element decyduje o charakterze szkolenia. Mogą tu występować formy rekreacyjne,
           ale survival militarny może być traktowany jako faktyczne utrzymywanie wojskowej sprawności na wypadek działań wojennych
           </button>
         </li>
         <li class="list_item" style="  text-shadow: 0 0 0.2em blue;">
-          <button class="list_item_title" style="text-shadow: 0 0 0.2em blue;"><b style="text-transform: uppercase; color: black">survival miejski</b>
+          <button class="list_item_title" @click="ChangePageCity" style="text-shadow: 0 0 0.2em blue;"><b style="text-transform: uppercase; color: black">survival miejski</b>
             – celem survivalu miejskiego jest działanie samowystarczalne w warunkach metropolii,
           a więc szukania możliwości przetrwania w zagęszczeniu uwarunkowań społecznych.
           Ten rodzaj survivalu stawia nacisk na doświadczanie własnych możliwości i elementy poznawcze.
@@ -51,9 +55,25 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
-  }
+    msg: String,
+    // test: Boolean
+  },
+  methods:
+  {
+    ChangePageGreen()
+    {
+      this.$emit('first', this.green)
+    },
+    ChangePageMilitary()
+    {
+      this.$emit('second', this.military)
+    },
+    ChangePageCity()
+    {
+      this.$emit('third', this.city)
+    }
 
+  }
 }
 </script>
 
@@ -113,9 +133,10 @@ a {
 }
 .kinds
 {
-  background-image: url("../assets/wood.jpg");
+  background-image: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url("../assets/background-burnt-damaged-grunge.jpg");
+  background-size: cover;
   color: white;
-  padding: 30px 15vw 40px 15vw;
+  padding: 30px 15vw 300px 15vw;
   text-align: justify;
   flex-direction: column;
   align-items: center;

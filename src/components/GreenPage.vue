@@ -62,6 +62,7 @@ export default {
   background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("../assets/green_survival.jpg");
   min-height: 2000px;
   margin-bottom: -10px;
+  padding-bottom: 200px;
 }
 .title
 {
@@ -100,6 +101,13 @@ export default {
   justify-content: center;
   margin: 30px 6vw 0 6vw;
   color: #24801a;
+}
+
+@media screen and (max-width: 800px){
+  .choose {
+    width: 60vw;
+  }
+
 }
 
 </style>

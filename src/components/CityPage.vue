@@ -37,7 +37,6 @@
     <div v-else-if="selected_topic=='INNE'">
       <OtherPage class="w3-animate-top"></OtherPage>
     </div>
-  <a href="javascript:scroll(0,0);"><img class="arrow" src="@/assets/arrow.png"></a>
 
   </div>
 </template>
@@ -79,6 +78,7 @@ export default {
   background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("../assets/city_survival.jpg");
   min-height: 1000px;
   margin-bottom: -10px;
+  padding-bottom: 200px;
 }
 .title
 {
@@ -121,6 +121,22 @@ export default {
   background-color: dodgerblue;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+@media screen and (max-width:1200px)
+{
+  .choose_buttons
+  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  .button_city_page
+  {
+    width: 60vw;
+    margin-bottom: 30px;
+  }
+
 }
 
 
