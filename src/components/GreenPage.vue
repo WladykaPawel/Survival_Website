@@ -19,7 +19,7 @@
       <PlaceToSleepPage></PlaceToSleepPage>
     </div>
     <div class="main_container w3-animate-top" v-if="selected_topic=='Zdobywanie jedzenia'">
-      C.D.N...
+      <GettingFoodPage></GettingFoodPage>
     </div>
     <div class="main_container w3-animate-top" v-if="selected_topic=='Ogień i Ogniska'">
       C.D.N...
@@ -35,9 +35,10 @@
 import PreparationPage from "@/components/GreenPage_components/Preparation";
 import WeaponPage from "@/components/GreenPage_components/Weapon";
 import PlaceToSleepPage from "@/components/GreenPage_components/PlaceToSleep";
+import GettingFoodPage from "@/components/GreenPage_components/GettingFood";
 export default {
   name: "GreenPage",
-  components: {PlaceToSleepPage, WeaponPage, PreparationPage},
+  components: {GettingFoodPage, PlaceToSleepPage, WeaponPage, PreparationPage},
   data(){
     return{
       selected_topic:'Przygotowania',
@@ -49,7 +50,6 @@ export default {
         {topic:'Ogień i Ogniska'},
         {topic:'BHP i Pierwsza Pomoc'}
       ]
-
     }
   }
 }

@@ -216,7 +216,18 @@ export default {
   {
     margin-left: 0;
   }
+}
+@media screen and (max-width: 1050px){
 
+.knife_descriprion
+  {
+    font-size: 15px;
+    padding: 0 0 50px 0;
+  }
+.description
+  {
+    margin-bottom: 100px;
+  }
 
 }
 </style>

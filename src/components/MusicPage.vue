@@ -133,7 +133,7 @@ body {
   align-items: center;
   background: url("../assets/Music_background.jpg");
   background-size: cover;
-  height: 110vh;
+  min-height: 110vh;
   width: 100vw;
   margin-bottom: -10px;
 }
@@ -207,6 +207,11 @@ button:hover {
 .playlist .song {
   width: 80vw;
 }
+  .music_container
+  {
+    height: 1300px
+  ;
+  }
 }
 
 

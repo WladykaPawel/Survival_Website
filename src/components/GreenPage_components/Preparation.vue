@@ -108,4 +108,21 @@ export default {
 {
   font-size: 15px;
 }
+@media screen and (max-width: 1050px){
+  .title_1
+  {
+    font-size: 20px;
+    padding: 5px;
+  }
+.items
+  {
+    font-size: 15px;
+    padding: 0 10vw 50px 10vw;
+  }
+.description
+  {
+    margin-bottom: 100px;
+  }
+
+}
 </style>

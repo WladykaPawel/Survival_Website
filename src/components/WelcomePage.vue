@@ -18,7 +18,6 @@
 <!--    {{test}}-->
 <!--    {{test2}}-->
 <!--    <button class="button" @click="test2!=test2, $emit('add', test2)">zmiana</button>-->
-
     <div>
       <div class="description_list"> Survival występuje w wielu odmianach, które można ukształtować dla własnych potrzeb.
         Ze względu na charakter aktywności surwiwalowej wyróżnia się zazwyczaj trzy główne odmiany:
@@ -186,10 +185,10 @@ a {
 }
 
 @media screen and (max-width:1050px){
-.line
-{
-   margin: 30px 0 0 0;
-}
+  .line
+  {
+     margin: 30px 0 0 0;
+  }
   .welcome_page
   {
     height: 100vh;
@@ -197,7 +196,15 @@ a {
   .description {
     font-size: 16px;
   }
-
-
+  .description_list
+  {
+    font-size: 20px;
+    margin: 30px -3vw 10px -3vw;
+  }
+  .list
+  {
+    font-size: 18px;
+    padding: 20px 10px 0 10px;
+  }
 }
 </style>

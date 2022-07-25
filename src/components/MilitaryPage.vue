@@ -4,7 +4,8 @@
       Survival Militarny
     </div>
     <div class="main_military w3-animate-left">
-        Chwilowy brak zawartości :)
+        Chwilowy brak zawartości :)<br>
+        Ściśle Tajne
     </div>
   </div>
 </template>
@@ -12,7 +13,6 @@
 <script>
 export default {
   name: "MilitaryPage"
-
 }
 </script>
 

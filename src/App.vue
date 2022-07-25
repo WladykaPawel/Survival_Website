@@ -1,17 +1,34 @@
 <template>
-  <nav class="navbar_container navbar bg-light">
+  <nav v-if="display" class="navbar_container navbar bg-light">
     <div>
       <a class="navbar_brand navbar-brand">
         <button class="button_logo" @click="Scrool(),main = true, music = false, military=false, green=false, city=false"> <img src="./assets/logo.png" alt="" class="logo_navbar"> </button>
         <button class="button " @click="Scrool(), main = true, music = false, military=false, green=false, city=false">GŁÓWNA </button>
         <button class="button" @click="Scrool(), main = false, music = true, military=false, green=false, city=false">MUZYKA </button>
-        <button class="button nav_other_title" style=" text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em green;" @click="Scrool(), main = false, music = false, military=false, green=true, city=false">SURVIVAL <br> ZIELONY </button>
-        <button class="button nav_other_title" style=" text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em darkred;" @click="Scrool(), main = false, music = false, military=true, green=false, city=false">SURVIVAL <br> MILITARNY </button>
-        <button class="button nav_other_title" style=" text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em blue" @click="Scrool(), main = false, music = false, military=false, green=false, city=true">SURVIVAL <br> MIEJSKI </button>
+        <button class="button nav_other_title1" @click="Scrool(), main = false, music = false, military=false, green=true, city=false">SURVIVAL <br> ZIELONY </button>
+        <button class="button nav_other_title2" @click="Scrool(), main = false, music = false, military=true, green=false, city=false">SURVIVAL <br> MILITARNY </button>
+        <button class="button nav_other_title3" @click="Scrool(), main = false, music = false, military=false, green=false, city=true">SURVIVAL <br> MIEJSKI </button>
 <!--        <button class="button" @click="czy=!czy">zmiana</button>-->
 <!--        {{czy}}{{test2}}-->
       </a>
     </div>
+  </nav>
+  <nav v-else class="navbar_container navbar bg-light">
+    <section class="navbar_brand navbar-brand">
+    <button class="button_logo" @click="Scrool(),main = true, music = false, military=false, green=false, city=false"> <img src="./assets/logo.png" alt="" class="logo_navbar"> </button>
+
+    <input id="menu-toggle" type="checkbox" />
+    <label class='menu-button-container' for="menu-toggle">
+    <div class='menu-button'></div>
+  </label>
+    <ul class="menu">
+        <li><button class="button " @click="Scrool(), main = true, music = false, military=false, green=false, city=false">GŁÓWNA </button></li>
+        <li><button class="button" @click="Scrool(), main = false, music = true, military=false, green=false, city=false">MUZYKA </button></li>
+        <li><button class="button nav_other_title1" @click="Scrool(), main = false, music = false, military=false, green=true, city=false">SURVIVAL ZIELONY </button></li>
+        <li><button class="button nav_other_title2" @click="Scrool(), main = false, music = false, military=true, green=false, city=false">SURVIVAL MILITARNY </button></li>
+        <li><button class="button nav_other_title3" @click="Scrool(), main = false, music = false, military=false, green=false, city=true">SURVIVAL MIEJSKI </button></li>
+    </ul>
+  </section>
   </nav>
     <div class="main_choose" style="margin-top: 130px">
       <h1 v-if="main">
@@ -34,9 +51,11 @@
 
     <a href="javascript:scroll(0,0);">
       <img class="arrow" src="@/assets/arrow.png" alt="strzałka">
+      <img v-if="military" class="arrow" style="background-color: darkred" src="@/assets/arrow.png" alt="strzałka">
+      <img v-if="city" class="arrow" style="background-color: blue" src="@/assets/arrow.png" alt="strzałka">
     </a>
 
-  <FooterLine  @first="MainPage" @second="MusicPage"  @third="GreenPage" @fourth="MilitaryPage" @fifth="CityPage"> </FooterLine>
+  <FooterLine :info="military" :info2="city" @first="MainPage" @second="MusicPage"  @third="GreenPage" @fourth="MilitaryPage" @fifth="CityPage"> </FooterLine>
 
 </template>
 
@@ -63,12 +82,13 @@ export default {
   data() {
     return {
       main: true,
-      music: true,
-      military: true,
-      green: true,
-      city: true,
-      test: false,
+      music: false,
+      military: false,
+      green: false,
+      city: false,
+      display: true,
       disappearing_bool:false
+
     }
   },
   methods:
@@ -125,19 +145,33 @@ export default {
     {
       scroll(0,0);
     },
-    Disappearing()
-    {
-        if(scroll(0,300))
-        {
-          this.disappearing_bool=true;
+    onResize() {
+      if (window.innerWidth < 900) {
+          this.display = false;
+        } else {
+          this.display = true;
         }
     }
+  },
+
+    created() {
+      window.addEventListener('resize', this.onResize)
+    },
+    beforeUnmount() {
+      window.removeEventListener('resize', this.onResize)
+    }
+
+    // Disappearing()
+    // {
+    //     if(scroll(0,300))
+    //     {
+    //       this.disappearing_bool=true;
+    //     }
+    // }
     // test4(e) {
     //   this.czy.push(e);
     //   this.test5=e;
     //   },
-
-  },
 }
 // {
 //   (window).scroll(function () {
@@ -197,12 +231,40 @@ export default {
 {
   color: #37c225;
 }
-.nav_other_title
+.nav_other_title1
 {
   font-size: 20px;
   position: relative;
-  top: -20px
+  top: -20px;
+  text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em green;
 }
+.nav_other_title2
+{
+  font-size: 20px;
+  position: relative;
+  top: -20px;
+  text-shadow: 0 0 0.2em darkred, 0 0 0.2em #e0c708, 0 0 0.2em darkred;
+}
+.nav_other_title3
+{
+  font-size: 20px;
+  position: relative;
+  top: -20px;
+  text-shadow: 0 0 0.2em blue, 0 0 0.2em #e0c708, 0 0 0.2em blue;
+}
+.nav_other_title1:hover
+{
+  color: green;
+}
+.nav_other_title2:hover
+{
+  color: darkred;
+}
+.nav_other_title3:hover
+{
+  color: blue;
+}
+
 .arrow
 {
   width: 7vh;
@@ -221,8 +283,140 @@ export default {
   animation: bounce 0.5s infinite linear;
 }
 @keyframes bounce {
-    0% { transform: rotateY(0deg) }
-    50% { transform: scale(1.1)}
-    100% { transform: rotateY(0deg) }
+  0% {
+    transform: rotateY(0deg)
+  }
+  50% {
+    transform: scale(1.1)
+  }
+  100% {
+    transform: rotateY(0deg)
+  }
 }
+
+/*------------Burger Menu--------*/
+
+  .menu {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    }
+
+  .menu > li {
+    margin: 0 1rem;
+    overflow: hidden;
+  }
+
+  .menu-button-container {
+    display: flex;
+    height: 100%;
+    width: 30px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 30px;
+    z-index: 100;
+  }
+
+  #menu-toggle {
+    display: none;
+  }
+
+  .menu-button,
+  .menu-button::before,
+  .menu-button::after {
+    display: block;
+    background-color: white;
+
+    position: absolute;
+    height: 4px;
+    width: 30px;
+
+    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 2px;
+  }
+
+  .menu-button::before {
+    content: '';
+    margin-top: -8px;
+  }
+
+  .menu-button::after {
+    content: '';
+    margin-top: 8px;
+  }
+
+  #menu-toggle:checked + .menu-button-container .menu-button::before {
+    margin-top: 0px;
+    transform: rotate(405deg);
+  }
+
+  #menu-toggle:checked + .menu-button-container .menu-button {
+    background: rgba(255, 255, 255, 0);
+  }
+
+  #menu-toggle:checked + .menu-button-container .menu-button::after {
+    margin-top: 0px;
+    transform: rotate(-405deg);
+  }
+  #menu-toggle ~ .menu li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #menu-toggle:checked ~ .menu li {
+    border: 1px solid #333;
+    height: 4em;
+    padding: 0.5em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .menu > li {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    color: white;
+    background-color: #222;
+  }
+  .menu > li:not(:last-child) {
+    border-bottom: 1px solid #444;
+  }
+
+
+  /*-----------------------------------------------------------------------*/
+  @media screen and (max-width: 900px)
+  {
+    .nav_other_title1
+  {
+    top: 0;
+    font-size: 30px;
+  }
+  .nav_other_title2
+  {
+    top: 0;
+    font-size: 30px;
+  }
+  .nav_other_title3
+  {
+    top: 0;
+    font-size: 30px;
+  }
+
+  }
+
+
 </style>

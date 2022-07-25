@@ -7,9 +7,11 @@
         <li class="nav-item"><a @click="ChangePageGreen" class="nav_link nav-link px-2 text-muted">Survival Zielony</a></li>
         <li class="nav-item"><a @click="ChangePageMilitary" class="nav_link2 nav-link px-2 text-muted">Survival Militarny</a></li>
         <li class="nav-item"><a @click="ChangePageCity" class="nav_link3 nav-link px-2 text-muted">Survival Miejski</a></li>
-        <div class="line"></div>
-      </ul>
+        <div v-if="info" style="background: linear-gradient(to left, darkred, white);" class="line"></div>
+        <div v-else-if="info2" style="background: linear-gradient(to left, blue, white);" class="line"></div>
+        <div v-else class="line"></div>
 
+      </ul>
       <p class="text-center text-muted">© 2022 WladykaPawel</p>
     </footer>
   </div>
@@ -18,6 +20,10 @@
 <script>
 export default {
   name: "FooterLine",
+  props:{
+   info: Boolean,
+   info2: Boolean
+  },
   methods:
   {
     ChangePageMain()
@@ -108,5 +114,12 @@ export default {
   height: 2px;
   background: linear-gradient(to left, green, white);
   margin-top: 20px;
+}
+
+@media screen and (max-width: 850px){
+  .footer_container {
+  margin-top: -325px;
+  }
+
 }
 </style>
