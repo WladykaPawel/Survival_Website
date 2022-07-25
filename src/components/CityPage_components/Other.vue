@@ -130,7 +130,6 @@ export default {
   border-radius: 50px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
   margin-bottom: 70px;
-  animation: shake 1s infinite linear;
 }
 .image:hover
 {

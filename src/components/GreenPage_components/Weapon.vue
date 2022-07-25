@@ -198,4 +198,36 @@ export default {
   width: 15vw;
   height: 12vw;
 }
+
+@media screen and (max-width: 1200px){
+  .knife_container
+  {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+  }
+  .types_of_knife
+  {
+    margin: 40px 5vw 10px 5vw;
+    padding: 50px 10px 50px 50px;
+  }
+  .knife_image
+  {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 1050px){
+
+.knife_descriprion
+  {
+    font-size: 15px;
+    padding: 0 0 50px 0;
+  }
+.description
+  {
+    margin-bottom: 100px;
+  }
+
+}
 </style>
