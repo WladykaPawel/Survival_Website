@@ -106,4 +106,14 @@ export default {
 
 }
 
+@media screen and (max-width: 850px){
+  .title_1 {
+  font-size: 20px;
+  }
+  .image {
+  width: 80vw;
+}
+
+}
+
 </style>

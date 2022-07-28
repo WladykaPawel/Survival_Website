@@ -12,7 +12,7 @@
         Mimo tego że wiele rzeczy do jedzenia jesteś w stanie zdobyć samemu w lesie, to (w szczególności w początkowej fazie "zabawy" z survivalem) warto zaopatrzyć się w jedzenie.
         Najlepiej sycące, zajmujące mało miejsca i kaloryczne.
         Doskonałym pomysłem na jedzenie "w dziczy" są różnego rodzaju konserwy, przede wszystkim te wojskowe lub całe zestawy zawane "Racjami żywnościowymi".
-        <img class="image" src="@/assets/Green_survival/racje.jpg">
+        <div class="image_cont"><img class="image" src="@/assets/Green_survival/racje.jpg"></div>
         <i class="image_descriprion">Przykładowa racja żywnościowa</i>
         <br>
         Oprócz tego warto zabierać produkty liofilizowane.
@@ -93,17 +93,21 @@ export default {
   margin-bottom: 20px;
   padding: 0 10vw 50px 10vw;
 }
-.image
-{
+.image {
   width: 30vw;
   align-items: center;
-  padding: 30px 30px 10px 30px ;
-  transition: 1s;
+  padding: 30px 30px 10px 30px;
+  transition: 0.25s;
+  margin: 20px;
+
 }
 .image:hover
 {
   cursor: pointer;
+  margin: 10px 10px 30px 30px;
+  box-shadow: -10px 10px 10px 10px black;
 }
+
 .image_descriprion
 {
   font-size: 15px;
@@ -123,6 +127,20 @@ export default {
   {
     margin-bottom: 100px;
   }
+.image
+{
+  width: 45vw;
+  padding: 30px 30px 10px 30px ;
+}
 
+
+}
+
+@media screen and (max-width: 850px){
+.image
+{
+  width: 60vw;
+  padding: 30px 30px 10px 30px ;
+}
 }
 </style>
