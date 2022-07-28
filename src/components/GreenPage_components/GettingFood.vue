@@ -106,4 +106,27 @@ export default {
   }
 }
 
+@media screen and (max-width: 850px){
+.description
+{
+  padding: 0 1vw 10px 1vw;
+  font-size: 16px;
+}
+.title_1
+{
+  font-size: 25px;
+}
+.items
+{
+  padding: 0 10vw 50px 10vw;
+}
+#Warning
+{
+  font-size: 20px;
+}
+
+
+}
+
+
 </style>

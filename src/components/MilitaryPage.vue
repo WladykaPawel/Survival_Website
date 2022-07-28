@@ -5,14 +5,20 @@
     </div>
     <div class="main_military w3-animate-left">
         Chwilowy brak zawartości :)<br>
-        Ściśle Tajne
     </div>
+    <video class="movie"  width="500" height="300" controls>
+      <source src="../assets/movie.mp4" type="video/mp4">
+    </video>
+
+    <MainMilitarypage> </MainMilitarypage>
   </div>
 </template>
 
 <script>
+import MainMilitarypage from "@/components/MilitaryPage_components/MainMilitaryPage";
 export default {
-  name: "MilitaryPage"
+  name: "MilitaryPage",
+  components: {MainMilitarypage}
 }
 </script>
 
@@ -37,6 +43,9 @@ export default {
   margin: 20px;
   font-size: 30px;
   color: black;
+}
+.movie{
+  margin:200px 0 -400px 0;
 }
 
 </style>

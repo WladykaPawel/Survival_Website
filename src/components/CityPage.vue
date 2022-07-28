@@ -139,5 +139,12 @@ export default {
 
 }
 
+@media screen and (max-width: 850px ){
+    .container_city
+  {
+    padding-bottom: 300px;
+  }
+}
+
 
 </style>

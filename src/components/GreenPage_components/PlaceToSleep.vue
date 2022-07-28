@@ -5,10 +5,14 @@
   </div>
   <div class="main">
     Rodzaje schronień na noc lub złą pogodę podczas survivalu można podzielić na 3 kategorie:
-    <a href="#naturally_formed" class="bold">Nauralnie utworzone</a>, <a href="#bought" class="bold">Wcześniej przygotowane/zakupione</a> oraz
-    <a href="#self_made" class="bold">Samodzielnie wykonane</a>
   </div>
-  <div id="naturally_formed">
+    <div class="button_container">
+      <button class="button_page"  @click="selected_kind='naturalne'">Nauralnie utworzone </button>
+      <button class="button_page"  @click="selected_kind='przygotowane'">Wcześniej przygotowane </button>
+      <button class="button_page"  @click="selected_kind='wykonane'">Samodzielnie wykonane </button>
+    </div>
+
+  <div v-if="selected_kind=='naturalne'" class="kinds">
       Nauralnie utworzone
     <ul>
       <li class="list">
@@ -44,52 +48,53 @@
 
     </ul>
   </div>
-  <div id="bought">
-    Wcześniej przygotowane/zakupione
+  <div v-else-if="selected_kind=='przygotowane'" class="kinds">
+    Wcześniej przygotowane
     <ul>
       <li class="list">
-          <div class="place_container">
-            <div class="description">
+          <div class="float">
+            <img class="image" src="@/assets/Green_survival/namiot.jpg" alt="namiot">
+            <div>
               <div class="title">Namiot</div>
               Namiot to chyba pierwsza rzecz jaką ma się na myśli słysząc "biwak". Ważne jest by był wodoodporny, oraz lekki (w szczegolności dla osób którzy podróżują pieszo)
               Warto zaopatrzeć się w namiot mający tzw. tropik z przedsionkiem, to pozwala nam lepiej zagospodarować miejsce podczas dłuższego pobytu.
             </div>
-            <img class="image" src="@/assets/Green_survival/namiot.jpg" alt="namiot">
+
           </div>
       </li>
       <li class="list">
-          <div class="place_container">
-            <div class="description">
+          <div class="float">
+             <img class="image" src="@/assets/Green_survival/śpiwór.png" alt="spiwor">
+            <div>
               <div class="title">Śpiwór</div>
               Podczas pierwszych wypadów, dobry i ciepóły śpirór to podstawa. W nocy nawet w lecie temperatura bardzo mocno spada, więc ogrzanie się w śpiworze jest bardzo ważne
             </div>
-            <img class="image" src="@/assets/Green_survival/śpiwór.png" alt="spiwor">
           </div>
       </li>
       <li class="list">
-          <div class="place_container">
-            <div class="description">
+          <div class="float">
+            <img class="image" src="@/assets/Green_survival/hamak.jpg" alt="hamak">
+            <div>
               <div class="title">Hamak</div>
               Jest to stosunkowo nowy sposób spania w dziczy, lecz bardzo wygodny, w przeciweństwie do namiotu hamak jest bardzo lekki.
               Spanie whamaku zapewnia także bezpieczeństwo ze strony małych stworzeń czy owadów które podczas spania na ziemi mogą być uciążliwe
             </div>
-            <img class="image" src="@/assets/Green_survival/hamak.jpg" alt="hamak">
           </div>
       </li>
       <li class="list">
-           <div class="place_container">
-             <div class="description">
+           <div class="float">
+             <img class="image" src="@/assets/Green_survival/auto.jpg" alt="auto">
+             <div>
                <div class="title">Spanie w aucie</div>
                Chociaż brzmi to niedorzecznie spanie w aucie może byc całkiem wygodne, a na rynku jest mnóstwo dmuchanych materacy zapewniających komfort podczas tego wyboru.
                Spanie w aucie jest też stosunkowo bezpieczne, bo można się zamknąć od środka i zabezpieczyc przed poencjalnym niebezpieczeńswem
              </div>
-             <img class="image" src="@/assets/Green_survival/auto.jpg" alt="auto">
            </div>
       </li>
 
     </ul>
   </div>
-  <div id="self_made">
+  <div v-else-if="selected_kind=='wykonane'" class="kinds">
     Samodzielnie wykonane
     <div class="self">
       Przygotowywanie sobie własnego miejsca do spania jest ciężkie i uzależnione od sytuacji klimatycznej. W niektorych obszarach świata są to igla lub lodowe jamy, w innych chatki z gliny lub liści palm
@@ -105,7 +110,19 @@
 
 <script>
 export default {
-  name: "PlaceToSleepPage"
+  name: "PlaceToSleepPage",
+  data(){
+    return{
+      selected_kind:'naturalne',
+      kinds:[
+        {kind:'naturalne'}  ,
+        {kind:'przygotowane'},
+        {kind:'wykonane'}
+      ]
+
+    }
+  }
+
 }
 </script>
 
@@ -125,34 +142,45 @@ export default {
   font-size: 25px;
   text-align: justify;
 }
-.bold
+.button_container
 {
-  color: forestgreen;
-  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0 20px 0;
 }
-#naturally_formed
+.button_page
+{
+  padding: 15px;
+  margin: 10px 20px 10px 20px;
+  width: 240px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: green;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+.button_page:hover
+{
+  background-color: darkgreen;
+}
+.button_page:active {
+  background-color: darkgreen;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.button_page:focus {
+  background-color: limegreen;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.kinds
 {
   width: 70vw;
-  background: #FFFFFF;
-  border-radius: 10px;
-  margin: 20px;
-  color: #4c4c4c;
-  padding-top: 20px;
-}
-#bought
-{
-  width: 70vw;
-  background: #FFFFFF;
-  border-radius: 10px;
-  margin: 20px;
-  color: #4c4c4c;
-  padding-top: 20px;
-
-}
-#self_made
-{
-  width: 70vw;
-  background: #FFFFFF;
   border-radius: 10px;
   margin: 20px;
   color: #4c4c4c;
@@ -164,18 +192,15 @@ export default {
   text-align: justify;
   list-style: none;
   padding: 20px 50px 20px 20px;
+  margin-top: 50px;
+   background: #FFFFFF;
+  border-radius: 20px;
 }
 .title
 {
   color: #24801a;
   font-size: 30px;
   padding: 10px;
-}
-.place_container
-{
-  display: flex;
-  justify-content: space-between;
-  padding: 15px;
 }
 .image
 {
@@ -185,15 +210,18 @@ export default {
   border-radius: 45px;
   opacity: 1;
   transition: 1.5s;
+  float: left;
+  /*shape-outside: ellipse(100px 235px at 68% 26%);*/
 }
+
 .image:hover
 {
  opacity: 0.7;
  cursor: pointer;
 }
-.description
+.float
 {
-  padding: 3vw;
+  min-height: 20vw ;
 }
 .self
 {
@@ -201,6 +229,29 @@ export default {
   text-align: justify;
   list-style: none;
   padding: 20px 50px 20px 20px
+}
+
+@media screen and (max-width: 850px){
+  .button_container
+  {
+    flex-direction: column;
+  }
+  .button_page
+  {
+    width: 70vw;
+  }
+  .image{
+    width: 60vw;
+    height: 40vw;
+    padding-left: 0;
+  }
+  .list
+  {
+    font-size: 15px;
+    text-align: justify;
+    list-style: none;
+  }
+
 }
 
 </style>

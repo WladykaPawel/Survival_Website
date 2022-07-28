@@ -9,6 +9,7 @@
         {{ topic.topic }}
       </option>
     </select>
+
     <div class="main_container w3-animate-top" v-if="selected_topic=='Przygotowania'">
       <PreparationPage></PreparationPage>
     </div>
@@ -22,10 +23,10 @@
       <GettingFoodPage></GettingFoodPage>
     </div>
     <div class="main_container w3-animate-top" v-if="selected_topic=='Ogień i Ogniska'">
-      C.D.N...
+      <fire-and-campfires-page></fire-and-campfires-page>
     </div>
     <div class="main_container w3-animate-top" v-if="selected_topic=='BHP i Pierwsza Pomoc'">
-      C.D.N...
+      <b-h-p-and-first-aid-page></b-h-p-and-first-aid-page>
     </div>
 
   </div>
@@ -36,9 +37,11 @@ import PreparationPage from "@/components/GreenPage_components/Preparation";
 import WeaponPage from "@/components/GreenPage_components/Weapon";
 import PlaceToSleepPage from "@/components/GreenPage_components/PlaceToSleep";
 import GettingFoodPage from "@/components/GreenPage_components/GettingFood";
+import FireAndCampfiresPage from "@/components/GreenPage_components/FireAndCampfires";
+import BHPAndFirstAidPage from "@/components/GreenPage_components/BHPAndFirstAid";
 export default {
   name: "GreenPage",
-  components: {GettingFoodPage, PlaceToSleepPage, WeaponPage, PreparationPage},
+  components: {BHPAndFirstAidPage, FireAndCampfiresPage, GettingFoodPage, PlaceToSleepPage, WeaponPage, PreparationPage},
   data(){
     return{
       selected_topic:'Przygotowania',
@@ -103,9 +106,22 @@ export default {
   color: #24801a;
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 850px){
+  .choose_information
+  {
+    font-size: 25px;
+  }
   .choose {
     width: 60vw;
+  }
+  .container_green
+  {
+    padding-bottom: 400px;
+  }
+  .main_container
+  {
+    margin: 30px 2vw 0 2vw;
+
   }
 
 }
