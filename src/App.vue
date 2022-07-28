@@ -2,12 +2,18 @@
   <nav v-if="display" class="navbar_container navbar bg-light">
     <div>
       <a class="navbar_brand navbar-brand">
-        <button class="button_logo" @click="Scrool(),main = true, music = false, military=false, green=false, city=false"> <img src="./assets/logo.png" alt="" class="logo_navbar"> </button>
-        <button class="button " @click="Scrool(), main = true, music = false, military=false, green=false, city=false">GŁÓWNA </button>
-        <button class="button" @click="Scrool(), main = false, music = true, military=false, green=false, city=false">MUZYKA </button>
-        <button class="button nav_other_title1" @click="Scrool(), main = false, music = false, military=false, green=true, city=false">SURVIVAL <br> ZIELONY </button>
-        <button class="button nav_other_title2" @click="Scrool(), main = false, music = false, military=true, green=false, city=false">SURVIVAL <br> MILITARNY </button>
-        <button class="button nav_other_title3" @click="Scrool(), main = false, music = false, military=false, green=false, city=true">SURVIVAL <br> MIEJSKI </button>
+        <button v-if="position[1]" class="button_logo" @click="Scrool(),main = true, music = false, military=false, green=false, city=false"> <img src="./assets/logo.png" alt="" class="logo_navbar"> </button>
+        <button v-else class="button_logo" style="transform: scale(2); margin: 30px 0 0 30px" @click="Scrool(),main = true, music = false, military=false, green=false, city=false"> <img src="./assets/logo.png" alt="" class="logo_navbar"> </button>
+        <button v-if="main" style="color: #37c225;" class="button " @click="Scrool(), main = true, music = false, military=false, green=false, city=false">GŁÓWNA </button>
+        <button v-else class="button " @click="Scrool(), main = true, music = false, military=false, green=false, city=false">GŁÓWNA </button>
+        <button v-if="music" style="color: #37c225;" class="button" @click="Scrool(), main = false, music = true, military=false, green=false, city=false">MUZYKA </button>
+        <button v-else class="button" @click="Scrool(), main = false, music = true, military=false, green=false, city=false">MUZYKA </button>
+        <button v-if="green" style="color: green;" class="button nav_other_title1" @click="Scrool(), main = false, music = false, military=false, green=true, city=false">SURVIVAL <br> ZIELONY </button>
+        <button v-else class="button nav_other_title1" @click="Scrool(), main = false, music = false, military=false, green=true, city=false">SURVIVAL <br> ZIELONY </button>
+        <button v-if="military" style="color: darkred;" class="button nav_other_title2" @click="Scrool(), main = false, music = false, military=true, green=false, city=false">SURVIVAL <br> MILITARNY </button>
+        <button v-else class="button nav_other_title2" @click="Scrool(), main = false, music = false, military=true, green=false, city=false">SURVIVAL <br> MILITARNY </button>
+        <button v-if="city" style="color: blue;" class="button nav_other_title3" @click="Scrool(), main = false, music = false, military=false, green=false, city=true">SURVIVAL <br> MIEJSKI </button>
+        <button v-else class="button nav_other_title3" @click="Scrool(), main = false, music = false, military=false, green=false, city=true">SURVIVAL <br> MIEJSKI </button>
 <!--        <button class="button" @click="czy=!czy">zmiana</button>-->
 <!--        {{czy}}{{test2}}-->
       </a>
@@ -49,7 +55,7 @@
       </h1>
     </div>
 
-    <a href="javascript:scroll(0,0);">
+    <a v-if=position[1] href="javascript:scroll(0,0);">
       <img class="arrow" src="@/assets/arrow.png" alt="strzałka">
       <img v-if="military" class="arrow" style="background-color: darkred" src="@/assets/arrow.png" alt="strzałka">
       <img v-if="city" class="arrow" style="background-color: blue" src="@/assets/arrow.png" alt="strzałka">
@@ -66,11 +72,11 @@ import MilitaryPage from "@/components/MilitaryPage";
 import GreenPage from "@/components/GreenPage";
 import CityPage from "@/components/CityPage";
 import FooterLine from "@/components/Footer";
-
-
+import WinowScrollPosition from "./window-scroll-position";
 
 export default {
   name: 'App',
+  mixins:[WinowScrollPosition('position')],
   components: {
     FooterLine,
     CityPage,
@@ -160,7 +166,6 @@ export default {
     beforeUnmount() {
       window.removeEventListener('resize', this.onResize)
     }
-
     // Disappearing()
     // {
     //     if(scroll(0,300))
@@ -173,12 +178,12 @@ export default {
     //   this.test5=e;
     //   },
 }
-// {
-//   (window).scroll(function () {
-//       if (this.scrollTop() > 300) ('.arrow').fadeIn();
-//       else ('.arrow').fadeOut();
-//     }
-//     )}
+    // {
+    //   (window).scroll(function () {
+    //       if (this.scrollTop() > 300) ('.arrow').fadeIn();
+    //       else ('.arrow').fadeOut();
+    //     }
+    //     )}
 </script>
 
 <style>
@@ -197,9 +202,11 @@ export default {
   z-index: 1000 ;
   position:fixed;
   width: 100vw;
+  height: 130px;
   background: url("./assets/images.jpg");
   padding: 0!important;
   margin-top: -130px;
+
 }
 .main_choose
 {
@@ -214,9 +221,10 @@ export default {
 {
   background: none;
   border: none;
-
-
+  transition: 1s;
+  margin-right: 30px;
 }
+
 .button {
   font-size: 30px;
   color: aliceblue;
@@ -224,8 +232,9 @@ export default {
   font-family: fantasy;
   background: none;
   border: none;
-  margin: 0 1vw 0 1vw;
+  margin: 50px 1vw 0 1vw;
   /*color: #24801a*/
+  vertical-align: top;
 }
 .button:hover
 {
@@ -235,21 +244,21 @@ export default {
 {
   font-size: 20px;
   position: relative;
-  top: -20px;
+  top: -10px;
   text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em green;
 }
 .nav_other_title2
 {
   font-size: 20px;
   position: relative;
-  top: -20px;
+  top: -10px;
   text-shadow: 0 0 0.2em darkred, 0 0 0.2em #e0c708, 0 0 0.2em darkred;
 }
 .nav_other_title3
 {
   font-size: 20px;
   position: relative;
-  top: -20px;
+  top: -10px;
   text-shadow: 0 0 0.2em blue, 0 0 0.2em #e0c708, 0 0 0.2em blue;
 }
 .nav_other_title1:hover
@@ -398,24 +407,29 @@ export default {
 
 
   /*-----------------------------------------------------------------------*/
-  @media screen and (max-width: 900px)
-  {
-    .nav_other_title1
-  {
-    top: 0;
-    font-size: 30px;
-  }
-  .nav_other_title2
-  {
-    top: 0;
-    font-size: 30px;
-  }
-  .nav_other_title3
-  {
-    top: 0;
-    font-size: 30px;
-  }
+  @media screen and (max-width: 850px) {
+    .nav_other_title1 {
+      top: 0;
+      font-size: 30px;
+    }
 
+    .nav_other_title2 {
+      top: 0;
+      font-size: 30px;
+    }
+
+    .nav_other_title3 {
+      top: 0;
+      font-size: 30px;
+    }
+
+    .arrow {
+      display: none;
+    }
+
+    .button {
+      margin: 0px 1vw 0 1vw;
+    }
   }
 
 
