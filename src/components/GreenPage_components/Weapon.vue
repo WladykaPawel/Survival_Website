@@ -198,6 +198,20 @@ export default {
   width: 15vw;
   height: 12vw;
 }
+.knife_image:hover
+{
+  cursor: pointer;
+  margin: -10px 10px 10px 40px;
+  box-shadow: 10px 10px 10px 10px #888888;
+}
+.knife_image:active
+{
+  position: center;
+  box-shadow: 10px 10px 10px 10px #888888;
+  width: 40vw;
+  height: 25vw;
+
+}
 
 @media screen and (max-width: 1200px){
   .knife_container

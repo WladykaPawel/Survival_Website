@@ -1,7 +1,7 @@
 <template>
   <div class="music_container">
     <header>
-      <h1 class="w3-animate-left">Muzyka o tematyce Survivalu</h1>
+      <h1 class="w3-animate-right">Muzyka o tematyce Survivalu</h1>
     </header>
     <main>
       <section class="player w3-animate-left">
@@ -15,7 +15,7 @@
           <button class="next" @click="next">Next</button>
         </div>
       </section>
-      <section class="playlist w3-animate-right">
+      <section class="playlist w3-animate-top">
         <h3>Playlista</h3>
         <button v-for="song in songs" :key="song.src" @click="play(song)" :class="(song.src == current.src) ? 'song playing' : 'song'">
           {{ song.title }} - {{ song.artist }}
@@ -37,6 +37,46 @@ data () {
       index: 0,
       isPlaying: false,
       songs: [
+        {
+          title: 'Bieszczadzkie anioły',
+          artist: 'Stare Dobre Małżeństwo',
+          src: require('../assets/music/bieszczadzkie-anioly-stare-dobre-malzenstwo.mp3')
+        },
+        {
+          title: 'Testowy Utwór',
+          artist: 'Testowy wykonawca',
+          src: require('../assets/music/Black Clover - Opening 3 (HD).mp3')
+        },
+        {
+          title: 'The attack of the dead men',
+          artist: 'Sabaton',
+          src: require('../assets/music/sabaton-the-attack-of-the-dead-men-official-lyric-video.mp3')
+        },
+        {
+          title: 'Bieszczadzkie anioły',
+          artist: 'Stare Dobre Małżeństwo',
+          src: require('../assets/music/bieszczadzkie-anioly-stare-dobre-malzenstwo.mp3')
+        },
+        {
+          title: 'Testowy Utwór',
+          artist: 'Testowy wykonawca',
+          src: require('../assets/music/Black Clover - Opening 3 (HD).mp3')
+        },
+        {
+          title: 'The attack of the dead men',
+          artist: 'Sabaton',
+          src: require('../assets/music/sabaton-the-attack-of-the-dead-men-official-lyric-video.mp3')
+        },
+        {
+          title: 'Testowy Utwór',
+          artist: 'Testowy wykonawca',
+          src: require('../assets/music/Black Clover - Opening 3 (HD).mp3')
+        },
+        {
+          title: 'The attack of the dead men',
+          artist: 'Sabaton',
+          src: require('../assets/music/sabaton-the-attack-of-the-dead-men-official-lyric-video.mp3')
+        },
         {
           title: 'Bieszczadzkie anioły',
           artist: 'Stare Dobre Małżeństwo',
@@ -123,6 +163,26 @@ h2{
 a {
   color: #42b983;
 }
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to top, #24801a, #37c225);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: limegreen;
+}
+
 body {
 	font-family: sans-serif;
 }
@@ -133,7 +193,7 @@ body {
   align-items: center;
   background: url("../assets/Music_background.jpg");
   background-size: cover;
-  min-height: 110vh;
+  min-height: 120vh;
   width: 100vw;
   margin-bottom: -10px;
 }
@@ -184,6 +244,8 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
+  height: 500px;
 }
 .playlist h3 {
   color: #FFFFFF;
@@ -203,15 +265,23 @@ button:hover {
   background-image: linear-gradient(to right, #24801a, #37c225);
   border-radius: 10px;
 }
-@media screen and (max-width:1050px){
+@media screen and (max-width:900px){
+.playlist .song {
+  width: 60vw;
+}
+.music_container {
+  height: 1300px;
+}
+
+}
+@media screen and (max-width:500px){
 .playlist .song {
   width: 80vw;
 }
-  .music_container
-  {
-    height: 1300px
-  ;
-  }
+.music_container {
+  height: 1400px;
+}
+
 }
 
 

@@ -12,7 +12,7 @@
         <div v-else class="line"></div>
 
       </ul>
-      <p class="text-center text-muted">© 2022 WladykaPawel</p>
+      <a href="https://github.com/WladykaPawel" class="signature text-center text-muted">© 2022 WladykaPawel</a>
     </footer>
   </div>
 </template>
@@ -115,7 +115,14 @@ export default {
   background: linear-gradient(to left, green, white);
   margin-top: 20px;
 }
-
+.signature
+{
+  text-decoration: none;
+}
+.signature:hover
+{
+  text-decoration: underline;
+}
 @media screen and (max-width: 850px){
   .footer_container {
   margin-top: -325px;

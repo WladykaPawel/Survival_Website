@@ -2,7 +2,7 @@
   <div class="welcome_page">
     <h1 class="w3-animate-zoom">{{ msg }}</h1>
      <h2 class="w3-animate-zoom">Zacznij swoją przygodę z survivalem! </h2>
-      <div class="description w3-animate-zoom">
+      <div class="description w3-animate-top">
         <i style="text-shadow: 0 0 0.2em #000, 0 0 0.2em #000, 0 0 0.2em #000;" >"Mianem <b style="text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em #24801a;">survivalu</b> (lub surwiwalu) określa się sztukę przetrwania w trudnych warunkach. Jest to swego rodzaju samoratownictwo,
         czyli radzenie sobie w specyficznym scenariuszu,
         np. klęski żywiołowej, wojny, wypadku, zagubienia na odludziu itd. Dotyczy to ekstremalnych sytuacji i to nie tylko w dziczy, ale i w mieście (np. podczas blackoutu).
@@ -12,6 +12,7 @@
         </i>
       </div>
     <div class="line"></div>
+    <div class="test_slider"></div>
   </div>
   <section class="kinds">
     <div> Rodzaje Survivalu</div>
@@ -48,6 +49,7 @@
       </ul>
     </div>
   </section>
+
 </template>
 
 <script>
@@ -79,20 +81,51 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1 {
-  margin: 70px 0 0;
+  margin: 70px 0 0 0 ;
   font-family: fantasy;
-  font-size: 60px;
+  font-size: 55px;
   text-shadow: 0 0 0.2em #24801a, 0 0 0.2em #e0c708, 0 0 0.2em #24801a;
   transition: 1s;
+  animation: anime 15s infinite linear;
 }
 h1:hover
 {
-  transform: scale(1.2);
-  cursor: pointer;
+  animation: anime 5s infinite linear;
+}
+
+@keyframes anime {
+  0% {
+    transform: scale(1.1);
+    color: #37c225;
+  }
+  25% {
+    transform: scale(1);
+    color: white;
+  }
+  50% {
+    transform: scale(1.1);
+    color: #37c225;
+  }
+  75% {
+    transform: scale(1);
+    color: white;
+  }
+  100% {
+    transform: scale(1.1);
+    color: #37c225;
+  }
+  /*75% {*/
+  /*  transform: rotateY(180deg);*/
+  /*}*/
+  /*100% {*/
+  /*  transform: rotateY(-180deg);*/
+  /*}*/
+
 }
 h2{
 
   margin: 20px;
+  font-family: fantasy;
 }
 
 a {
@@ -107,7 +140,7 @@ a {
   /*background: url("../assets/Background.jpg");*/
   background: url("../assets/giphy.gif");
   background-size: cover;
-  height: 80vh;
+  height: 100vh;
 }
 .description
 {
@@ -130,6 +163,50 @@ a {
   height: 3px;
   margin: 80px 10px 0 10px;
 }
+
+.test_slider
+{
+  margin-top: 20px;
+  width: 400px;
+  height: 250px;
+  animation: slider 20s infinite linear;
+  background-size: cover;
+}
+
+@keyframes slider {
+  0%{
+    background:url("../assets/City_survival/odziez.jpg");
+    border-radius: 50px;
+    background-position: center;
+    background-size: cover;
+  }
+  25%{
+    background:url("../assets/City_survival/inne.jpg");
+    border-radius: 10px;
+    background-position: center;
+    background-size: cover;
+  }
+  50%{
+    background:url("../assets/City_survival/schronienie.jpg");
+    border-radius: 10px;
+    background-position: center;
+    background-size: cover;
+  }
+  75%{
+    background:url("../assets/City_survival/bron.jpg");
+    border-radius: 50px;
+    background-position: center;
+    background-size: cover;
+  }
+  100%{
+    background:url("../assets/City_survival/odziez.jpg");
+    border-radius: 50px;
+    background-position: center;
+    background-size: cover;
+  }
+
+}
+
 .kinds
 {
   background-image: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url("../assets/background-burnt-damaged-grunge.jpg");
@@ -205,6 +282,10 @@ a {
   {
     font-size: 18px;
     padding: 20px 10px 0 10px;
+  }
+  .test_slider
+  {
+    display: none;
   }
 }
 </style>
