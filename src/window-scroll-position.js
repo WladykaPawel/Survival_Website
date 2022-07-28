@@ -6,6 +6,7 @@ export default function windowScrollPosition(propertyName) {
         [propertyName]: [0, 0]
       }
     },
+
     created() {
       // Only execute this code on the client side, server sticks to [0, 0]
       if (!this.$isServer) {
